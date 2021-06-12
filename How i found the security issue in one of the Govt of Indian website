@@ -1,0 +1,36 @@
+Hello everyone, this is my first valid bug/security misconfiguration issue in one of the Govt of Indian website.
+
+Bug-type: RDP (Remote Desktop control)
+Website: example.govt.in
+IP address: 10.10.10.1 (example)
+
+TO get a IP address of a website use “ping -4 example.govt.in” you will get a ip address 10.10.10.1.
+
+Everything started from scanning the open ports by using nmap,
+nmap -sC -sV 10.10.10.1
+-sC: equivalent to — script=default
+-sV: Probe open ports to determine service/version info
+
+Found more than 29 open ports, but 1 port caught my attention was port number 3389 (RDP) (windows server)
+
+To access the windows remote desktop service from unix based system there is open source tool called “rdesktop”.
+
+rdesktop 10.10.10.1
+
+Got access to the login page with a warning message by clicking ok got a login pannel.
+
+Without wasting time on bruteforce tried some default credentials and got a valid username (****) and tried some default passwords none of them were valid so i stopped looking for a valid password right there.
+
+Took a screenshot of the login pannel and made a report with steps to reproduce and submitted to rvdp after 3 days they sent a acknowledgement email and after 2days the issue was fixed.
+
+impact of RDP
+1) Bruteforce the login credentials
+2) Getting a full access to the server
+3) In recent time most of ransomware and data breach attack was happend through RDP
+4) etc.
+
+How to fix the issue
+1) Filter the port in firewall of server
+2) Closing the port after the work complete ..
+
+Tip: Never stop learning
